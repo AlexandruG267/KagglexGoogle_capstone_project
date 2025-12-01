@@ -7,7 +7,7 @@ Academic research is that moment in every students' life that comes with a cours
 
 **Our Solution: Research Concierge**
 
-We present a Multi-agent system designed to automate the literature review process (the thousand-stairs path between "I have a research idea" and writing the first word in LaTeX). By decoupling discovery from analysis, we ensure high-fidelity results without overloading the model's context. By using multiple agents, each with a concrete task, we ensure quality at every step. By integrating a HITL, we also ensure the results remain completely under the command of the researcher.
+We present a Multi-agent system designed to automate the literature review process (the thousand-stairs path between "I have a research idea" and writing the first word in LaTeX). By decoupling discovery from analysis, we ensure high-fidelity results without overloading the model's context. By using multiple agents, each with a concrete task, we ensure quality at every step. By integrating a HITL, we also ensure the results remain completely under the control of the researcher.
 
 **Key Concepts & Architecture**
 
