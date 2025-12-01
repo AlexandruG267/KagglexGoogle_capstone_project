@@ -37,7 +37,7 @@ We implemented persistent state management using *DatabaseSessionService* (SQLit
 
 *Built-in Tools*: OpenAlex API integration for retrieving real-time academic data.
 
-*Multimodal Processing*: We used *Gemini 2.5 Flash*, chosen for its balance of high speed and reasoning capabilities. It processes the text extracted from PDFs efficiently, ensuring that the summarization loop completes rapidly even when handling large batches of academic papers.
+*Modal Performance*: We used *Gemini 2.5 Flash*, chosen for its balance of high speed and reasoning capabilities. It processes the text extracted from PDFs efficiently, ensuring that the summarization loop completes rapidly even when handling large batches of academic papers.
 
 **Impact**
 
