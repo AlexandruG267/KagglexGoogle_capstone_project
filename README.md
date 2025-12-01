@@ -23,21 +23,21 @@ Agent 2 (The Analyst) is responsible for *deep reading* and *synthesis*.
 
 This *Sequential Agent Architecture* solves both issues at the same time: On the one hand, the Scout never reads all 100 papers entirely, so it can focus on broad searching. On the other hand, the "Analyst" is not distracted by *search* tasks, but rather deeply reads and analyzes information in the selected papers. This approach ensures a separation of concerns. 
 
-2. **Loop Agents for Context Management**
+2. **Iterative Tooling for Context Management**
 
-To solve the issue of reading multiple heavy PDFs (150+ pages long), the Analyst Agent uses a Loop agent pattern.
+To solve the issue of reading multiple heavy PDFs (150+ pages long) without using a complex "Loop Agent" construct, the Analyst Agent utilizes Looping Tools. 
 
-It iterates through the approved papers, and for each one it processes it, creates a summary, saves it, flushes the memory (resulting in a fresh context window), and moves on to the next one. At the end, the results are aggregated. This approach ensures that the 10th paper is analyzed with the *same accuracy* as the 1st, and no hallucinations occur between papers (such as the model taking findings ofrom one paper and attributing them to the next).
+The Agent iterates through the approved papers by calling its tools repeatedly. For each paper, it fetches the content, creates a summary, saves it, and then calls the tool again for the next paper. This results in a fresh processing step for each document. This approach ensures that the 10th paper is analyzed with the same accuracy as the 1st, and no hallucinations occur between papers (such as the model taking findings from one paper and attributing them to the next).
 
 3. **Sessions & State Management**
 
-We implemented *sessions and state management* (`InMemorySession`) as the bridge between agents. The Scout Agent pushes approved paper URLs to the session state, which acts as a queue for the Analyst Agent to retrieve (the Analyst Agent needs to retrieve the entire paper). This effectively functions as a short-term memory bank of the workflow, a shared state between the Agents.
+We implemented persistent state management using *DatabaseSessionService* (SQLite) as the bridge between agents. The Scout Agent pushes approved paper URLs to the database session state, which acts as a structured queue for the Analyst Agent to retrieve. This functions as a persistent memory bank for the workflow, ensuring that approved research is saved securely between the search phase and the summarization phase.
 
-4. **Tools & Multimodal Capabilities**
+4. **Tools & Modal Capabilities**
 
 *Built-in Tools*: OpenAlex API integration for retrieving real-time academic data.
 
-*Multimodal Processing*: We used Gemini 3 Pro, the most performant model from Google, with powerful multimodal capabilites and a large context window. It has the native ability to process non-text modalities, passing PDF binaries directly to the model to preserve chart and table data.
+*Multimodal Processing*: We used *Gemini 2.5 Flash*, chosen for its balance of high speed and reasoning capabilities. It processes the text extracted from PDFs efficiently, ensuring that the summarization loop completes rapidly even when handling large batches of academic papers.
 
 **Impact**
 
